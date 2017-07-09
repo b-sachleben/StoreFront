@@ -1,0 +1,66 @@
+﻿@model StoreFrontShared.Models.Item
+
+@{
+     
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (var form = Html.BeginForm("AddItem", "Shop", FormMethod.Post))
+{
+    <div class="col-md-6">
+        <p>
+            First Name: @Html.EditorFor(model => model.Name,
+                          new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "",
+                          new { @class = "text-danger" })
+        </p>
+        <br />
+        <p>
+            Category: @Html.EditorFor(x => x.Category,
+            new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Category, "",
+            new { @class = "text-danger" })
+        </p>
+        <br />
+        <p>
+            Image: @Html.EditorFor(x => x.Image,
+            new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Image, "",
+            new { @class = "text-danger" })
+        </p>
+        <br />
+        <p>
+            Price: @Html.EditorFor(x => x.ItemDetails.Price,
+            new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ItemDetails.Price, "",
+            new { @class = "text-danger" })
+        </p>
+        <br />
+        <p>
+            Quantity: @Html.EditorFor(x => x.ItemDetails.Quantity,
+            new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ItemDetails.Quantity, "",
+            new { @class = "text-danger" })
+        </p>
+        <br />
+        <p>
+            Number Available: @Html.EditorFor(x => x.ItemDetails.NumberAvailable,
+            new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ItemDetails.NumberAvailable, "",
+            new { @class = "text-danger" })
+        </p>
+        <br />
+    </div>
+        <div class="col-md-6">
+            <p>
+                Description: <br />@Html.TextAreaFor(x => x.Description, 14, 20,
+            new { htmlAttributes = new { @class = "form-control", style = "width: 400px; height: 200px;" } })
+                @Html.ValidationMessageFor(model => model.Description, "",
+            new { @class = "text-danger" })
+            </p>
+            <br />
+
+        </div>
+        <input type="submit" value="Add Item" name="submitItem" />
+}

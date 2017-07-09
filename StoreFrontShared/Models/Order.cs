@@ -41,7 +41,7 @@ namespace StoreFrontShared.Models
 
             foreach(Item item in Items)
             {
-                var IndividualItemTotal = (this.Item.ItemDetails.Price) * (this.Item.ItemDetails.Quantity);
+                var IndividualItemTotal = (this.Item.Price) * (this.Item.ItemDetails.Quantity);
                 runningTotal += IndividualItemTotal;
             }
 

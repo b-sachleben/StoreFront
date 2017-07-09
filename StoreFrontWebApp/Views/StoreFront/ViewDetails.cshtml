@@ -1,0 +1,32 @@
+﻿@model StoreFrontShared.Models.Item
+
+@{
+    
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table table-striped">
+
+    <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Image</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Number Available</th>
+    </tr>
+    
+    <tr>
+        <td>@ViewBag.Name</td>
+        <td>@ViewBag.Category</td>
+        <td>@ViewBag.Image</td>
+        <td>@ViewBag.Description</td>
+        @*Fix below items - object reference not set to an instance of an object
+        <td>@ViewBag.ItemDetails.Price</td>
+        <td>@ViewBag.ItemDetails.Quantity</td>
+        <td>@ViewBag.ItemDetails.NumberAvailable</td>*@
+    </tr>
+
+</table>

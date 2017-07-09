@@ -1,0 +1,61 @@
+﻿@model List<StoreFrontShared.Models.Item>
+@using StoreFrontShared.Models;
+
+@{
+//Dictionary<Item, ItemDetails> finalList = new Dictionary<Item, ItemDetails>();
+
+//foreach (var itemWithDetails in Model)
+//{
+//    var items = itemWithDetails.Item;
+//    var details = itemWithDetails.ItemDetails;
+
+//    finalList.Add(items, details);
+//}
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table table-striped">
+
+    <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Image</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Number Available</th>
+    </tr>
+        
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            @*<td>@item.Key.Name</td>
+            <td>@item.Key.Category</td>
+            <td>@item.Key.Image</td>
+            <td>@item.Key.Description</td>*@
+            
+            @*Fix below items - object reference not set to an instance of an object*@
+                       
+            @*<td>@item.Key.Price</td>
+            <td>@item.Value.Quantity</td>
+            <td>@item.Key.NumberAvailable</td>*@
+
+            <td>@item.Name</td>
+            <td>@item.Category</td>
+            <td>@item.Image</td>
+            <td>@item.Description</td>
+            <td>@item.Price</td>
+            <td>@item.ItemDetails.Quantity</td>
+            <td>@item.NumberAvailable</td>
+        </tr>
+    }
+                    
+    <tr>
+        <td>@Html.ActionLink("Add Item", "AddItem", "StoreFront")</td>
+        <td></td>
+    </tr>
+
+</table>
+

@@ -1,26 +1,47 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StoreFrontShared.Models
 {
-    public class ItemDetails
+    public class ItemDetails : IEnumerable<ItemDetails>
     {
+        //----------Default Constructor - initializes collection property-----
+
         public ItemDetails()
         {
-            Items = new List<Item>();
+            Items = new List<ItemWithDetails>();
         }
 
-        public int ItemId { get; set; } // foreign key for items table
+        //-----------Properties-----------------------------------------
 
+        [Key, ForeignKey("Item")]
         public int Id { get; set; }
-        public Item Item { get; set; }
-        public decimal Price { get; set; }
         public int Quantity { get; set; }
-        public int NumberAvailable { get; set; }
+        
 
-        public ICollection<Item> Items { get; set; }
+        //-----------Navigation Property---------------------------------
+
+        public virtual Item Item { get; set; }
+
+        //-----------Collection of other many-to-many object---------------
+
+        public ICollection<ItemWithDetails> Items { get; set; }
+
+        //----------------------------------------------------------------
+        //-----------Other Methods----------------------------------------
+
+        private List<ItemDetails> _itemDetails;
+
+        public IEnumerator<ItemDetails> GetEnumerator()
+        {
+            return _itemDetails.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _itemDetails.GetEnumerator();
+        }
     }
 }
